@@ -23,7 +23,8 @@ This repository is useful to interact with the new Environment Agency [Water Qua
 * The new WQA API has a limit of 250 rows per request. This workflow handles that constraint using the API’s skip pagination parameter within a while True loop to retrieve data for each site-determinand combination in multiple chunks. This ensures complete data extraction for long monitoring records.
 * The workflow standardises the datetime field (phenomenonTime) by splitting it into separate date and time columns.
 * Measurement strings in the result column are parsed using a regex pattern to separate censoring qualifiers (e.g. <) from the numeric value.
-* Once all data are retrieved, the nested dictionaries are flattened and melted into a single DataFrame, suitable for downstream analysis and aggregation.
+* Once all data are retrieved, the nested dictionaries are flattened and melted into a single DataFrame, suitable for downstream analysis and aggregation (if you don't fancy dictionaries).
+* For each determinand, the workflow calculates the number of unique sampling days per site per year (dropping same day measurements) The result is plotted and exported as a CSV file in matrix format, where rows represent sites and columns represent years, to assess data density and temporal coverage for each determinand across sites.
 
 
 
